@@ -10,6 +10,10 @@ use Mix.Config
 config :foodstock,
   ecto_repos: [Foodstock.Repo]
 
+config :foodstock, Foodstock.Repo,
+  migration_primary_key: [type: :binary_id],
+  foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :foodstock, FoodstockWeb.Endpoint,
   url: [host: "localhost"],

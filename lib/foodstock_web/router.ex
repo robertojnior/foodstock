@@ -7,6 +7,8 @@ defmodule FoodstockWeb.Router do
 
   scope "/api", FoodstockWeb do
     pipe_through :api
+
+    post "/restaurants", RestaurantsController, :create
   end
 
   # Enables LiveDashboard only for development

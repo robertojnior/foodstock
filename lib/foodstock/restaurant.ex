@@ -3,6 +3,8 @@ defmodule Foodstock.Restaurant do
 
   import Ecto.Changeset
 
+  alias Foodstock.Supply
+
   @primary_key {:id, :binary_id, autogenerate: true}
 
   @required_fields [:name, :email]
@@ -14,6 +16,8 @@ defmodule Foodstock.Restaurant do
   schema "restaurants" do
     field :name, :string
     field :email, :string
+
+    has_many :supplies, Supply
 
     timestamps()
   end

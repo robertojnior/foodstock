@@ -10,7 +10,7 @@ defmodule FoodstockWeb.Router do
 
     post "/restaurants", RestaurantsController, :create
 
-    post "/supplies", SuppliesController, :create
+    resources "/supplies", SuppliesController, only: [:show, :create]
   end
 
   # Enables LiveDashboard only for development

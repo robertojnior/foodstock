@@ -10,8 +10,10 @@ defmodule Foodstock do
   alias Foodstock.Restaurants.Create, as: CreateRestaurant
 
   alias Foodstock.Supplies.Create, as: CreateSupply
+  alias Foodstock.Supplies.FindOne, as: FindOneSupply
 
   defdelegate create_restaurant(params), to: CreateRestaurant, as: :call
 
+  defdelegate find_supply(params), to: FindOneSupply, as: :call
   defdelegate create_supply(params), to: CreateSupply, as: :call
 end

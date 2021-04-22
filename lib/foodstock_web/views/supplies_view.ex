@@ -4,4 +4,6 @@ defmodule FoodstockWeb.SuppliesView do
   def render("create.json", %{supply: supply}) do
     supply
   end
+
+  def render("show.json", %{supply: supply}), do: supply
 end

@@ -20,6 +20,10 @@ defmodule FoodstockWeb.ErrorView do
     %{errors: translate_errors(changeset)}
   end
 
+  def render("error.json", %{result: result}) do
+    %{errors: result}
+  end
+
   defp translate_errors(changeset) do
     Changeset.traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->

@@ -22,6 +22,9 @@ config :foodstock, FoodstockWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+# ## Mailer
+config :foodstock, Foodstock.Mailer, adapter: Bamboo.LocalAdapter
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

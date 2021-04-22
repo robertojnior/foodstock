@@ -20,3 +20,6 @@ config :foodstock, FoodstockWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# ## Mailer
+config :foodstock, Foodstock.Mailer, adapter: Bamboo.TestAdapter

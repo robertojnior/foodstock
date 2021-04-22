@@ -28,4 +28,8 @@ defmodule FoodstockWeb.Router do
       live_dashboard "/dashboard", metrics: FoodstockWeb.Telemetry
     end
   end
+
+  if Mix.env() in [:dev] do
+    forward "/emails", Bamboo.SentEmailViewerPlug
+  end
 end

@@ -5,12 +5,14 @@ defmodule Foodstock.Supplies.ExpirationNotification do
   alias Foodstock.Supplies.ExpiringThisWeek, as: SuppliesExpiringThisWeek
 
   def deliver do
-    restaurant_supplies = SuppliesExpiringThisWeek.call()
+    SuppliesExpiringThisWeek.call()
+    |> Task.async_stream(fn {email, supplies} -> send_email(email, supplies) end)
+    |> Stream.run()
+  end
 
-    Enum.each(restaurant_supplies, fn {restaurant_mail, supplies} ->
-      restaurant_mail
-      |> ExpirationEmail.new(supplies)
-      |> Mailer.deliver_later!()
-    end)
+  defp send_email(email, supplies) do
+    email
+    |> ExpirationEmail.new(supplies)
+    |> Mailer.deliver_later!()
   end
 end
